@@ -18,11 +18,11 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        use: ["style-loader", "sass-loader"],
-        test: /\.scss?/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.scss$/,
       },
       {
-        type: "asset/resouce",
+        type: "asset/resource",
         test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
       },
     ],
