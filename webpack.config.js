@@ -18,9 +18,10 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        use: ["style-loader", "css-loader", "sass-loader"],
-        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+        test: /\.(scss|css)$/,
       },
+
       {
         type: "asset/resource",
         test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
@@ -48,5 +49,6 @@ module.exports = {
       title: "LoL In-House Team Randomizer",
       inject: "body",
     }),
+    require("autoprefixer"),
   ],
 }

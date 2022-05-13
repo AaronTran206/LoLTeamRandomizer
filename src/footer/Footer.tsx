@@ -3,9 +3,9 @@ import "./footer.scss"
 
 const Footer: React.FC<{}> = ({}) => {
   return (
-    <section>
+    <footer>
       <div>Footer</div>
-    </section>
+    </footer>
   )
 }
 
