@@ -5,13 +5,17 @@ import ReactDOM from "react-dom"
 import Header from "../header/Header"
 import Teams from "../teams/Teams"
 import Nav from "../nav/Nav"
+import { DndProvider } from "react-dnd"
+import { HTML5Backend } from "react-dnd-html5-backend"
 
 const App: React.FC<{}> = ({}) => {
   return (
     <>
-      <Header />
-      <Teams />
-      <Nav />
+      <DndProvider backend={HTML5Backend}>
+        <Header />
+        <Teams />
+        <Nav />
+      </DndProvider>
     </>
   )
 }
