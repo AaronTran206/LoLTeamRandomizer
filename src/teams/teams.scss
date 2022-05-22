@@ -21,6 +21,7 @@
   border-radius: 0 0.7rem 0.7rem 0;
   aspect-ratio: 1/1;
   transition: $transition;
+  border: 1px solid transparent;
 }
 
 .blue {
@@ -36,15 +37,12 @@
 }
 
 .teams__list {
-  max-width: fit-content;
-  margin: auto;
-
   input {
     font-weight: 500;
     font-size: 1.5rem;
     height: 3rem;
     color: $color-white;
-    margin: 1.2rem auto;
+    margin: 1.2rem 0rem;
     padding: 0.5rem 2.5rem;
     border-radius: 0.7rem 0rem 0rem 0.7rem;
   }

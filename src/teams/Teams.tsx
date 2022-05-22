@@ -14,8 +14,6 @@ const Teams: React.FC<{}> = ({}) => {
   const [summoner8, setSummoner8] = useState<string>("")
   const [summoner9, setSummoner9] = useState<string>("")
 
-  const summonerArr = ["", "", "", "", "", "", "", "", "", ""]
-
   const randomizeSummoners = () => {
     //put summoners states into an array to prepare for randomization
     const array = [
@@ -56,72 +54,72 @@ const Teams: React.FC<{}> = ({}) => {
 
   const renderTeams = (color: string) => {
     return (
-      <article className={`col-sm-12 col-md-5 teams__container ${color}-list`}>
+      <article className={`col-sm-10 col-md-5 teams__container ${color}-list`}>
         <div className="teams__list ">
           <li className="row align-items-center justify-content-center">
             <input
-              className="col-10"
+              className="col-8"
               onChange={
                 color === "blue"
                   ? (e) => setSummoner0(e.target.value)
                   : (e) => setSummoner5(e.target.value)
               }
               value={color === "blue" ? summoner0 : summoner5}
-              placeholder="Enter Summoner name"
+              placeholder={color === "blue" ? "Summoner 1" : "Summoner 6"}
             ></input>
-            <div className="col-2 nerf-icon"></div>
+            <div className="col-1 nerf-icon"></div>
           </li>
           <li className="row align-items-center justify-content-center">
             <input
-              className="col-10"
+              className="col-8"
               onChange={
                 color === "blue"
                   ? (e) => setSummoner1(e.target.value)
                   : (e) => setSummoner6(e.target.value)
               }
               value={color === "blue" ? summoner1 : summoner6}
-              placeholder="Enter Summoner name"
+              placeholder={color === "blue" ? "Summoner 2" : "Summoner 7"}
             ></input>
-            <div className="col-2 nerf-icon"></div>
+            <div className="col-1 nerf-icon"></div>
           </li>
           <li className="row align-items-center justify-content-center">
             <input
-              className="col-10"
+              className="col-8"
               onChange={
                 color === "blue"
                   ? (e) => setSummoner2(e.target.value)
                   : (e) => setSummoner7(e.target.value)
               }
               value={color === "blue" ? summoner2 : summoner7}
-              placeholder="Enter Summoner name"
+              placeholder={color === "blue" ? "Summoner 3" : "Summoner 8"}
             ></input>
-            <div className="col-2 nerf-icon"></div>
+            <div className="col-1 nerf-icon"></div>
           </li>
           <li className="row align-items-center justify-content-center">
             <input
-              className="col-10"
+              className="col-8"
               onChange={
                 color === "blue"
                   ? (e) => setSummoner3(e.target.value)
                   : (e) => setSummoner8(e.target.value)
               }
               value={color === "blue" ? summoner3 : summoner8}
-              placeholder="Enter Summoner name"
+              placeholder={color === "blue" ? "Summoner 4" : "Summoner 9"}
             ></input>
-            <div className="col-2 nerf-icon"></div>
+            <div className="col-1 nerf-icon"></div>
           </li>
           <li className="row align-items-center justify-content-center">
             <input
-              className="col-10"
+              className="col-8"
               onChange={
                 color === "blue"
                   ? (e) => setSummoner4(e.target.value)
                   : (e) => setSummoner9(e.target.value)
               }
               value={color === "blue" ? summoner4 : summoner9}
-              placeholder="Enter Summoner name"
+              placeholder={color === "blue" ? "Summoner 5" : "Summoner 10"}
             ></input>
-            <div className="col-2 nerf-icon"></div>
+            <div className="col-1 nerf-icon"></div>
           </li>
         </div>
       </article>
