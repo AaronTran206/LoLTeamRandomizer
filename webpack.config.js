@@ -6,7 +6,7 @@ module.exports = {
   mode: "development",
   entry: {
     app: path.resolve("./src/app/App.tsx"),
-    footer: path.resolve("./src/footer/Footer.tsx"),
+    nav: path.resolve("./src/nav/Nav.tsx"),
     header: path.resolve("./src/header/Header.tsx"),
     teams: path.resolve("./src/teams/Teams.tsx"),
   },

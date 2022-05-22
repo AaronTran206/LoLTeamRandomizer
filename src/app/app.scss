@@ -23,8 +23,8 @@ html {
 }
 
 body {
-  background: $color-background;
-  background-image: url(../static/always-grey.png);
+  // background: $color-background;
+  background-image: url(../static/always-grey.png), $color-background;
   font-family: "Radio Canada", sans-serif;
   line-height: 1.7;
   color: $color-white;
