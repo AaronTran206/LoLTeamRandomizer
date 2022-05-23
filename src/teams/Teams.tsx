@@ -1,36 +1,63 @@
-import React, { ReactElement, useState } from "react"
-import { useDrop } from "react-dnd"
+import { createReadStream } from "fs"
+import React, { useCallback, useState } from "react"
+import {} from "react-dnd"
 import Player from "../player/Player"
 
 import "./teams.scss"
 
+interface summonerObject {
+  id: string
+  text: string
+}
+
 const Teams: React.FC<{}> = ({}) => {
-  const [blueTeam] = useState<Array<ReactElement>>([
-    <Player i={1} />,
-    <Player i={2} />,
-    <Player i={3} />,
-    <Player i={4} />,
-    <Player i={5} />,
+  const [teams, setTeams] = useState<summonerObject[]>([
+    { id: "Summoner 1", text: "" },
+    { id: "Summoner 2", text: "" },
+    { id: "Summoner 3", text: "" },
+    { id: "Summoner 4", text: "" },
+    { id: "Summoner 5", text: "" },
+    { id: "Summoner 6", text: "" },
+    { id: "Summoner 7", text: "" },
+    { id: "Summoner 8", text: "" },
+    { id: "Summoner 9", text: "" },
+    { id: "Summoner 10", text: "" },
   ])
-  const [redTeam] = useState<Array<ReactElement>>([
-    <Player i={1} />,
-    <Player i={2} />,
-    <Player i={3} />,
-    <Player i={4} />,
-    <Player i={5} />,
-  ])
-  const [{ isOver }, addtoTeamRef] = useDrop({
-    accept: "player",
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver,
-    }),
-  })
-  const [{ isOver: isPlayerOver }, removeFromTeamRef] = useDrop({
-    accept: "team",
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver,
-    }),
-  })
+
+  //callback to be used by Player component to find index of itself within teams state
+  const findPlayer = useCallback(
+    (id: string) => {
+      const player = teams.filter((c) => c.id === id)[0] as {
+        id: string
+        text: string
+      }
+      return {
+        player,
+        index: teams.indexOf(player),
+      }
+    },
+    [teams]
+  )
+
+  //callback to be used by Player component to move Player
+  const switchPlayer = useCallback(
+    (id: string, atIndex: number) => {
+      const { player, index } = findPlayer(id)
+      console.log(player)
+    },
+    [findPlayer, teams, setTeams]
+  )
+
+  //get state data from child component and update array with new text data
+  const getText = useCallback(
+    (id: string, summonerText: string) => {
+      const player = teams.filter((c) => c.id === id)[0]
+      const index = teams.indexOf(player)
+      teams[index].text = summonerText
+      console.log(player.text)
+    },
+    [teams]
+  )
 
   const randomizeSummoners = () => {
     //put summoners states into an array to prepare for randomization
@@ -59,21 +86,46 @@ const Teams: React.FC<{}> = ({}) => {
     //   }
   }
 
-  const renderTeams = (color: string, arr: Array<ReactElement>) => {
+  const renderTeams = (arr: summonerObject[]) => {
+    const blueTeam = arr.slice(0, 5)
+    const redTeam = arr.slice(5, 10)
+
     return (
-      <article className={`col-sm-10 col-md-5 teams__container ${color}-list`}>
-        <div className="teams__list " ref={addtoTeamRef}>
-          {arr.map((ele) => ele)}
-        </div>
-      </article>
+      <>
+        <article className={`col-sm-10 col-md-5 teams__container blue-list`}>
+          <div className="teams__list ">
+            {blueTeam.map((str) => (
+              <Player
+                key={str.id}
+                id={str.id}
+                switchPlayer={switchPlayer}
+                findPlayer={findPlayer}
+                getText={getText}
+              />
+            ))}
+          </div>
+        </article>
+        <article className={`col-sm-10 col-md-5 teams__container red-list`}>
+          <div className="teams__list ">
+            {redTeam.map((str, i) => (
+              <Player
+                key={str.id}
+                id={str.id}
+                switchPlayer={switchPlayer}
+                findPlayer={findPlayer}
+                getText={getText}
+              />
+            ))}
+          </div>
+        </article>
+      </>
     )
   }
 
   return (
     <section className="container  px-0">
       <div className="row g-3 d-flex justify-content-evenly" spellCheck="false">
-        {renderTeams("blue", blueTeam)}
-        {renderTeams("red", redTeam)}
+        {renderTeams(teams)}
       </div>
 
       <button onClick={randomizeSummoners}>Randomize</button>
