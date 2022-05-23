@@ -2,13 +2,9 @@ import React, { useState } from "react"
 import { useDrag } from "react-dnd"
 
 const Player: React.FC<{
-  color: string
   i: number
-
-  onDropPlayer: Function
-}> = ({ color, i, onDropPlayer }) => {
+}> = ({ i }) => {
   const [summoner, setSummoner] = useState<string>("")
-  const index = color === "blue" ? `Summoner ${i}` : `Summoner ${i + 5}`
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "player",
@@ -18,15 +14,13 @@ const Player: React.FC<{
   })
 
   return (
-    <li
-      className="row align-items-center justify-content-center"
-      style={{ border: isDragging ? "5px solid pink" : "0px" }}
-    >
+    <li className="row align-items-center justify-content-center">
       <input
+        style={{ border: isDragging ? "2px solid pink" : "0px" }}
         className="col-8"
         onChange={(e) => setSummoner(e.target.value)}
         value={summoner}
-        placeholder={`Summoner ${index}`}
+        placeholder="Summoner name"
         ref={dragRef}
       ></input>
       <div className="col-1 nerf-icon"></div>

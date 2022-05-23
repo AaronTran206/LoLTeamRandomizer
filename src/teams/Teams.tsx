@@ -1,12 +1,24 @@
-import React, { useState } from "react"
+import React, { ReactElement, useState } from "react"
 import { useDrop } from "react-dnd"
 import Player from "../player/Player"
 
 import "./teams.scss"
 
 const Teams: React.FC<{}> = ({}) => {
-  const [blueTeam, setBlueTeam] = useState<Array<string>>([])
-  const [redTeam, setRedTeam] = useState<Array<string>>([])
+  const [blueTeam] = useState<Array<ReactElement>>([
+    <Player i={1} />,
+    <Player i={2} />,
+    <Player i={3} />,
+    <Player i={4} />,
+    <Player i={5} />,
+  ])
+  const [redTeam] = useState<Array<ReactElement>>([
+    <Player i={1} />,
+    <Player i={2} />,
+    <Player i={3} />,
+    <Player i={4} />,
+    <Player i={5} />,
+  ])
   const [{ isOver }, addtoTeamRef] = useDrop({
     accept: "player",
     collect: (monitor) => ({
@@ -19,8 +31,6 @@ const Teams: React.FC<{}> = ({}) => {
       isOver: !!monitor.isOver,
     }),
   })
-
-  const movePlayer = (item) => {}
 
   const randomizeSummoners = () => {
     //put summoners states into an array to prepare for randomization
@@ -49,15 +59,11 @@ const Teams: React.FC<{}> = ({}) => {
     //   }
   }
 
-  const renderTeams = (color: string) => {
+  const renderTeams = (color: string, arr: Array<ReactElement>) => {
     return (
       <article className={`col-sm-10 col-md-5 teams__container ${color}-list`}>
         <div className="teams__list " ref={addtoTeamRef}>
-          <Player color={color} i={1} onDropPlayer={movePlayer} />
-          <Player color={color} i={2} onDropPlayer={movePlayer} />
-          <Player color={color} i={3} onDropPlayer={movePlayer} />
-          <Player color={color} i={4} onDropPlayer={movePlayer} />
-          <Player color={color} i={5} onDropPlayer={movePlayer} />
+          {arr.map((ele) => ele)}
         </div>
       </article>
     )
@@ -66,8 +72,8 @@ const Teams: React.FC<{}> = ({}) => {
   return (
     <section className="container  px-0">
       <div className="row g-3 d-flex justify-content-evenly" spellCheck="false">
-        {renderTeams("blue")}
-        {renderTeams("red")}
+        {renderTeams("blue", blueTeam)}
+        {renderTeams("red", redTeam)}
       </div>
 
       <button onClick={randomizeSummoners}>Randomize</button>
