@@ -1,0 +1,128 @@
+@import "../app/variables";
+
+.teams__container {
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem 0 1rem;
+  box-shadow: 2px 5px 8px black;
+}
+
+.teams__container-header {
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nerf-icon {
+  background-color: $color-darker-transparent;
+  height: 3rem;
+  border-radius: 0 0.7rem 0.7rem 0;
+  aspect-ratio: 1/1;
+  transition: $transition;
+  border: 1px solid transparent;
+}
+
+.blue {
+  background-image: $team-blue;
+  background-position: left;
+  animation: bg-animation 4s infinite alternate;
+}
+
+.red {
+  background-image: $team-red;
+  background-position: right;
+  animation: bg-animation 3.5s infinite alternate;
+}
+
+.teams__list {
+  input {
+    font-weight: 500;
+    font-size: 1.5rem;
+    height: 3rem;
+    color: $color-white;
+    margin: 1rem 0rem;
+    padding: 0.5rem 2.5rem;
+    border-radius: 0.7rem 0rem 0rem 0.7rem;
+  }
+}
+
+.blue-list {
+  background-color: $color-blue-variant;
+  border: 1px solid transparent;
+  transition: $transition;
+
+  &:hover,
+  &:focus-within {
+    background-color: $color-dark-transparent;
+    border: 1px solid $color-blue-primary;
+  }
+
+  input {
+    background-color: $color-blue-bg-variant;
+    border: 1px solid $color-blue-variant;
+    transition: $transition;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $color-blue-primary;
+      border: 1px solid transparent;
+    }
+  }
+  ::placeholder {
+    color: $color-blue-primary;
+  }
+
+  .nerf-icon {
+    &:hover {
+      background-color: $color-blue-bg;
+      border: 1px solid $color-blue-primary;
+    }
+  }
+}
+
+.red-list {
+  background-color: $color-red-variant;
+  border: 1px solid transparent;
+  transition: $transition;
+
+  &:hover,
+  &:focus-within {
+    background-color: $color-dark-transparent;
+    border: 1px solid $color-red-primary;
+  }
+
+  input {
+    background-color: $color-red-bg-variant;
+    border: 1px solid $color-red-variant;
+    transition: $transition;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $color-red-primary;
+      border: 1px solid transparent;
+    }
+  }
+  ::placeholder {
+    color: $color-red-primary;
+  }
+  .nerf-icon {
+    &:hover {
+      height: 3rem;
+      background-color: $color-red-bg;
+      border: 1px solid $color-red-primary;
+    }
+  }
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
