@@ -1,19 +1,24 @@
-import React, { useState } from "react"
+import React from "react"
 import { useDrag, useDrop } from "react-dnd"
+import { useDispatch } from "react-redux"
+import {
+  setSummonerName,
+  setSummonerId,
+  selectSummonerId,
+} from "../slices/summonerNameSlice"
 
 const Player: React.FC<{
+  text: string
   id: string
   switchPlayer: (id: string, to: number) => void
   findPlayer: (id: string) => { index: number }
-  getText: (id: string, summonerText: string) => void
-}> = ({ id, switchPlayer, findPlayer, getText }) => {
-  const [summoner, setSummoner] = useState<string>("")
-
+}> = ({ text, id, switchPlayer, findPlayer }) => {
   //get original index of Player
   const originalIndex = findPlayer(id).index
 
-  //send state data to teams component
-  getText(id, summoner)
+  //set Summoner ID to state
+  const dispatch = useDispatch()
+  console.log(dispatch(setSummonerId(id)))
 
   //link drag ref to input component.
   //create isDragging element to style components with when component is being dragged
@@ -36,23 +41,21 @@ const Player: React.FC<{
     [id, originalIndex, switchPlayer]
   )
 
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: "player",
-    drop: (item: any) => addPlayerToTeam(item.id),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+  const [{ isOver }, drop] = useDrop(
+    () => ({
+      accept: "player",
+      collect: (monitor) => ({
+        isOver: !!monitor.isOver(),
+      }),
+      drop({ id: draggedId }) {
+        const { index } = findPlayer(id)
+        if (draggedId !== id) {
+          switchPlayer(draggedId, index)
+        }
+      },
     }),
-    hover({ id: draggedId }) {
-      if (draggedId !== id) {
-        const { index: overIndex } = findPlayer(id)
-        switchPlayer(draggedId, overIndex)
-      }
-    },
-  }))
-
-  const addPlayerToTeam = (id: string) => {
-    console.log(id)
-  }
+    [findPlayer, switchPlayer]
+  )
 
   return (
     <li ref={drop} className="row align-items-center justify-content-center">
@@ -62,8 +65,8 @@ const Player: React.FC<{
           border: isDragging || isOver ? "1px solid white" : "0px",
         }}
         className="col-8"
-        onChange={(e) => setSummoner(e.target.value)}
-        value={summoner}
+        onChange={(e) => setSummonerName(e.target.value)}
+        value={text}
         placeholder={id}
         ref={dragRef}
       ></input>
