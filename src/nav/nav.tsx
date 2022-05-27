@@ -1,13 +1,15 @@
 import React from "react"
 import "./nav.scss"
 import { FaDice } from "react-icons/fa"
-import { SiApplearcade } from "react-icons/si"
+import { GiEvilBook } from "react-icons/gi"
+import { useSelector, useDispatch } from "react-redux"
+import { setTeamSlice, summonerObject } from "../slices/teamSlice"
 
 const cursedPerks = [
   {
     id: 1,
     name: `Leg Day`,
-    rules: `Play without a chair and keep desk at sitting level.`,
+    rules: `Have no chair for 2 minutes then sit back in chair for 3 minutes. Repeat until game is over while keeping desk at sitting level.`,
   },
   {
     id: 2,
@@ -58,44 +60,52 @@ const cursedPerks = [
 
 const cursedGamemodes = [
   {
+    id: 1,
     name: `Hand Solo`,
     rules: `You can only play with your mouse.`,
   },
   {
+    id: 2,
     name: `The Ol-Switcheroo`,
     rules: `Switch the position of your keyboard and mouse.`,
   },
   {
+    id: 3,
     name: `Nemesis Draft`,
     rules: `Players pick the champion that the the enemy of the same position will play.`,
   },
 ]
 
 const Nav: React.FC<{}> = ({}) => {
-  // const randomizeSummoners = () => {
-  //   //put summoners states into an array to prepare for randomization
+  const dispatch = useDispatch()
 
-  //   //loop through each variable of the array starting from the last to the first
-  //   // for (let i = array.length - 1; i > 0; i--) {
-  //   //   //generate a random index number based on the current index loop
-  //   //   const a = Math.floor(Math.random() * (i + 1))
-  //   //   //save current value of the array at index i
-  //   //   const b = array[i]
-  //   //   //set array at index i value to array at index a value
-  //   //   array[i] = array[a]
-  //   //   //complete the switch of two values by setting the array at index a value to the original array at index i value
-  //   //   array[a] = b
-  //   }
-  // }
+  const randomizeSummoners = () => {
+    // put summoners states into an array to prepare for randomization
+    console.log("array")
+    const teams: summonerObject[] = useSelector(
+      (state: any) => state.team.teamArr
+    )
+
+    // loop through each variable of the array starting from the last to the first
+    for (let i = teams.length - 1; i > 0; i--) {
+      const a = Math.floor(Math.random() * (i + 1))
+
+      //swap positions of teams elements using a temp variable
+      const temp = teams[i]
+      teams[i] = teams[a]
+      teams[a] = temp
+    }
+    dispatch(setTeamSlice(teams))
+  }
 
   return (
     <nav>
-      <div className="button__icon">
+      <button className="button__icon" onClick={randomizeSummoners}>
         <FaDice />
-      </div>
-      <div className="button__icon">
-        <SiApplearcade />
-      </div>
+      </button>
+      <button className="button__icon">
+        <GiEvilBook />
+      </button>
     </nav>
   )
 }

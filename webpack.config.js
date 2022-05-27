@@ -46,8 +46,7 @@ module.exports = {
       ],
     }),
     new HtmlPlugin({
-      title: "LoL In-House Team Randomizer",
-      inject: "body",
+      template: "./index.html",
     }),
     require("autoprefixer"),
   ],

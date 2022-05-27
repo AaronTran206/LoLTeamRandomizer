@@ -1,7 +1,7 @@
 import "./app.scss"
 import "../../node_modules/bootstrap/scss/bootstrap.scss"
 import React from "react"
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom/client"
 import Header from "../header/Header"
 import Teams from "../teams/Teams"
 import Nav from "../nav/Nav"
@@ -22,6 +22,4 @@ const App: React.FC<{}> = ({}) => {
   )
 }
 
-const root = document.createElement("div")
-document.body.appendChild(root)
-ReactDOM.render(<App />, root)
+ReactDOM.createRoot(document.getElementById("root")).render(<App />)
