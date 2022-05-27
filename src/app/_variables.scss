@@ -22,7 +22,7 @@ $color-red-variant: rgb(168, 22, 0);
 $color-darker-transparent: rgba(0, 0, 0, 0.6);
 $color-dark-transparent: rgba(0, 0, 0, 0.3);
 $color-white: rgb(236, 230, 230);
-$color-light: rgb(110, 110, 110);
+$color-light: rgb(139, 139, 139);
 
 $team-red: linear-gradient(225deg, rgb(255, 51, 0), rgb(250, 100, 100));
 $team-blue: linear-gradient(135deg, rgb(17, 140, 255), rgb(70, 209, 255));
@@ -41,6 +41,8 @@ $color-background: linear-gradient(
   $color-red-bg-variant,
   $color-red-bg
 );
+
+$color-active: rgb(20, 10, 20);
 
 $container-width-lg: 75%;
 $container-width-md: 85%;
