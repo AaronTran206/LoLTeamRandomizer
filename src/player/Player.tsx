@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { useDrag, useDrop } from "react-dnd"
+import { useDispatch, useSelector } from "react-redux"
+import { setPlayerTextSlice } from "../slices/teamSlice"
 
 const Player: React.FC<{
   text: string
@@ -7,7 +9,7 @@ const Player: React.FC<{
   switchPlayer: (id: string, to: number) => void
   findPlayer: (id: string) => { index: number }
 }> = ({ text, id, switchPlayer, findPlayer }) => {
-  const [summonerText, setSummonerText] = useState<string>("")
+  const dispatch = useDispatch()
 
   //get original index of Player
   const originalIndex = findPlayer(id).index
@@ -57,8 +59,10 @@ const Player: React.FC<{
           border: isDragging || isOver ? "1px solid white" : "0px",
         }}
         className="col-8"
-        onChange={(e) => setSummonerText(e.target.value)}
-        value={summonerText}
+        onChange={(e) =>
+          dispatch(setPlayerTextSlice({ id: id, text: e.target.value }))
+        }
+        value={text}
         placeholder={id}
         ref={dragRef}
       ></input>

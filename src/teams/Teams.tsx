@@ -41,6 +41,8 @@ const Teams: React.FC<{}> = ({}) => {
       updatedArr[index] = updatedArr[atIndex]
       updatedArr[atIndex] = temp
 
+      console.log(updatedArr)
+
       dispatch(setTeamSlice(updatedArr))
 
       //rerender component with updated array placements

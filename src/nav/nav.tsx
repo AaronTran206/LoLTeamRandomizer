@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback } from "react"
 import "./nav.scss"
 import { FaDice } from "react-icons/fa"
 import { GiEvilBook } from "react-icons/gi"
@@ -9,7 +9,7 @@ const cursedPerks = [
   {
     id: 1,
     name: `Leg Day`,
-    rules: `Have no chair for 2 minutes then sit back in chair for 3 minutes. Repeat until game is over while keeping desk at sitting level.`,
+    rules: `Squat above your chair for 1 minutes then sit back in chair for 3 minutes. Repeat until game is over while keeping desk at sitting level.`,
   },
   {
     id: 2,
@@ -56,6 +56,11 @@ const cursedPerks = [
     name: `Beginner`,
     rules: `You must play on lock-screen. If you naturally play lock-screen, then you must play on unlocked-screen.`,
   },
+  {
+    id: 11,
+    name: `Arm Day`,
+    rules: `After every death, you must do 15 pushups. Max is 60 pushups in one game. You cannot start playing again until you finish your pushups.`,
+  },
 ]
 
 const cursedGamemodes = [
@@ -78,32 +83,35 @@ const cursedGamemodes = [
 
 const Nav: React.FC<{}> = ({}) => {
   const dispatch = useDispatch()
+  const teams: summonerObject[] = useSelector(
+    (state: any) => state.team.teamArr
+  )
 
-  const randomizeSummoners = () => {
+  const randomizePerks = useCallback(() => {}, [setTeamSlice, teams])
+
+  const randomizeSummoners = useCallback(() => {
     // put summoners states into an array to prepare for randomization
-    console.log("array")
-    const teams: summonerObject[] = useSelector(
-      (state: any) => state.team.teamArr
-    )
+    const randomizeArr = [...teams]
+    console.log(randomizeArr)
 
     // loop through each variable of the array starting from the last to the first
-    for (let i = teams.length - 1; i > 0; i--) {
+    for (let i = randomizeArr.length - 1; i > 0; i--) {
       const a = Math.floor(Math.random() * (i + 1))
 
-      //swap positions of teams elements using a temp variable
-      const temp = teams[i]
-      teams[i] = teams[a]
-      teams[a] = temp
+      //swap positions of randomizeArr elements using a temp variable
+      const temp = randomizeArr[i]
+      randomizeArr[i] = randomizeArr[a]
+      randomizeArr[a] = temp
     }
-    dispatch(setTeamSlice(teams))
-  }
+    dispatch(setTeamSlice(randomizeArr))
+  }, [setTeamSlice, teams])
 
   return (
     <nav>
       <button className="button__icon" onClick={randomizeSummoners}>
         <FaDice />
       </button>
-      <button className="button__icon">
+      <button className="button__icon" onClick={randomizePerks}>
         <GiEvilBook />
       </button>
     </nav>

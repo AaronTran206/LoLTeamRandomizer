@@ -26,11 +26,20 @@ export const teamSlice = createSlice({
     setTeamSlice: (state, action) => {
       state.teamArr = action.payload
     },
+    setPlayerTextSlice: (state, action) => {
+      //get object and index position of object
+      const player = state.teamArr.find(
+        (summoner) => summoner.id === action.payload.id
+      )
+
+      //update text of object
+      player.text = action.payload.text
+    },
   },
 })
 
 //export actions for slice
-export const { setTeamSlice } = teamSlice.actions
+export const { setTeamSlice, setPlayerTextSlice } = teamSlice.actions
 
 //selectors for slice
 export const selectTeams = (state) => state.team.teamArr
