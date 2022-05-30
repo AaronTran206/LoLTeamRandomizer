@@ -63,24 +63,6 @@ const cursedPerks = [
   },
 ]
 
-const cursedGamemodes = [
-  {
-    id: 1,
-    name: `Hand Solo`,
-    rules: `You can only play with your mouse.`,
-  },
-  {
-    id: 2,
-    name: `The Ol-Switcheroo`,
-    rules: `Switch the position of your keyboard and mouse.`,
-  },
-  {
-    id: 3,
-    name: `Nemesis Draft`,
-    rules: `Players pick the champion that the the enemy of the same position will play.`,
-  },
-]
-
 const Nav: React.FC<{}> = ({}) => {
   const dispatch = useDispatch()
   const teams: summonerObject[] = useSelector(

@@ -1,0 +1,43 @@
+@import "../app/variables";
+
+.gamemode__container {
+  @include flexCenter(column);
+  margin-top: 5rem;
+}
+
+.gamemode__name {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 1.2rem;
+  color: $color-white;
+  font-size: 2rem;
+  transition: $transition;
+  padding: 0.2rem 4rem;
+
+  &:hover {
+    border: 1px solid $color-white;
+  }
+}
+
+.gamemode__rules {
+  margin-top: 1rem;
+  background-color: $color-dark-transparent;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  border: 1px solid transparent;
+  transition: $transition;
+
+  &:hover {
+    border: 1px solid $color-white;
+    color: $color-white;
+  }
+}
+
+.gamemode__list {
+  width: 100%;
+}
+.gamemode__list-items {
+  display: flex;
+  text-align: center;
+  font-size: 1.2rem;
+}
