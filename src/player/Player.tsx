@@ -63,7 +63,7 @@ const Player: React.FC<{
           dispatch(setPlayerTextSlice({ id: id, text: e.target.value }))
         }
         value={text}
-        placeholder={id}
+        placeholder={"Summoner Name"}
         ref={dragRef}
       ></input>
       <div className="col-1 nerf-icon"></div>

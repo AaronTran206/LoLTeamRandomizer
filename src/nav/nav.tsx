@@ -1,7 +1,8 @@
 import React, { useCallback } from "react"
 import "./nav.scss"
 import { FaDice } from "react-icons/fa"
-import { GiEvilBook } from "react-icons/gi"
+import { GiPresent } from "react-icons/gi"
+import { HiHome } from "react-icons/hi"
 import { useSelector, useDispatch } from "react-redux"
 import { setTeamSlice, summonerObject } from "../slices/teamSlice"
 
@@ -90,12 +91,15 @@ const Nav: React.FC<{}> = ({}) => {
 
   return (
     <nav>
-      <button className="button__icon" onClick={randomizeSummoners}>
+      <a className="button__icon" href="#">
+        <HiHome />
+      </a>
+      <a className="button__icon" onClick={randomizeSummoners}>
         <FaDice />
-      </button>
-      <button className="button__icon" onClick={randomizePerks}>
-        <GiEvilBook />
-      </button>
+      </a>
+      <a className="button__icon" onClick={randomizePerks}>
+        <GiPresent />
+      </a>
     </nav>
   )
 }

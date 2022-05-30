@@ -28,9 +28,13 @@ const availableGamemodes = [
 ]
 
 const Gamemode: React.FC<{}> = ({}) => {
+  //get dispatch hook from react-redux
   const dispatch = useDispatch()
+
+  //grab global gamemode state
   const gamemode = useSelector((state: any) => state.gamemode.mode)
 
+  //when link is clicked, set the global gamemode state to the gamemode that was clicked
   const handleClickGamemode = (gamemode: string) => {
     const chosenGamemode = availableGamemodes.find(
       (obj) => obj.name === gamemode
