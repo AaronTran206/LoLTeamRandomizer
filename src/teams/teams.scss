@@ -11,14 +11,9 @@
   box-shadow: 2px 5px 8px black;
 }
 
-.teams__container-header {
-  background-size: 400%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 .nerf-icon {
+  position: relative;
+  left: 1.7rem;
   background-color: $color-darker-transparent;
   height: 3rem;
   border-radius: 0 0.7rem 0.7rem 0;
@@ -41,6 +36,8 @@
 
 .teams__list {
   input {
+    position: relative;
+    left: 1.7rem;
     font-weight: 500;
     font-size: 1.5rem;
     height: 3rem;
