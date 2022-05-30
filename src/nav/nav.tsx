@@ -60,7 +60,12 @@ const cursedPerks = [
   {
     id: 11,
     name: `Arm Day`,
-    rules: `After every death, you must do 15 pushups. Max is 60 pushups in one game. You cannot start playing again until you finish your pushups.`,
+    rules: `After every death, you must do 10 pushups. Max is 50 pushups in one game. You cannot start playing again until you finish your pushups.`,
+  },
+  {
+    id: 12,
+    name: `Ab Day`,
+    rules: `After every death, you must do 15 situps. Max is 75 situps in one game. You cannot start playing again until you finish your pushups.`,
   },
 ]
 

@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { useDrag, useDrop } from "react-dnd"
 import { useDispatch, useSelector } from "react-redux"
 import { setPlayerTextSlice } from "../slices/teamSlice"
+import { TiDelete } from "react-icons/ti"
+import "./player.scss"
 
 const Player: React.FC<{
   text: string
@@ -58,7 +60,7 @@ const Player: React.FC<{
           opacity: isDragging ? 0.4 : 1,
           border: isDragging || isOver ? "1px solid white" : "0px",
         }}
-        className="col-8"
+        className="col-7"
         onChange={(e) =>
           dispatch(setPlayerTextSlice({ id: id, text: e.target.value }))
         }
@@ -66,7 +68,14 @@ const Player: React.FC<{
         placeholder={"Summoner Name"}
         ref={dragRef}
       ></input>
-      <div className="col-1 nerf-icon"></div>
+      <div className="col-2 nerf-icon"></div>
+
+      <TiDelete
+        className={"delete-icon"}
+        onClick={() => {
+          dispatch(setPlayerTextSlice({ id: id, text: "" }))
+        }}
+      />
     </li>
   )
 }
