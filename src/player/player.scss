@@ -1,18 +1,46 @@
 @import "../app/variables";
 
+.input-container {
+  padding: 0rem;
+  position: relative;
+}
+
+input {
+  font-weight: 500;
+  font-size: 1.5rem;
+  height: 3rem;
+  color: $color-white;
+  margin: 1rem 0rem;
+  padding: 0.5rem 2.5rem;
+  border-radius: 0.7rem 0rem 0rem 0.7rem;
+  border: 1px solid $color-dark-transparent;
+  max-width: 100%;
+}
+
 .delete-icon {
   width: fit-content;
-  height: fit-content;
-  position: relative;
-  right: 8.5rem;
+  height: 100%;
   color: $color-dark-transparent;
-  font-size: 2.5rem;
   transition: $transition;
   background-clip: content-box;
   -webkit-background-clip: content-box;
+  position: absolute;
+  height: 3rem;
+  right: 0rem;
+  top: 1rem;
+  z-index: 99;
 
   &:hover {
     color: $color-light;
     cursor: pointer;
   }
+}
+
+.perk-icon {
+  background-color: $color-darker-transparent;
+  height: 3rem;
+  border-radius: 0 0.7rem 0.7rem 0;
+  aspect-ratio: 1/1;
+  transition: $transition;
+  border: 1px solid transparent;
 }

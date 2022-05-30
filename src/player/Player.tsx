@@ -54,28 +54,32 @@ const Player: React.FC<{
   )
 
   return (
-    <li ref={drop} className="row align-items-center justify-content-center">
-      <input
+    <li ref={drop}>
+      <div
         style={{
           opacity: isDragging ? 0.4 : 1,
           border: isDragging || isOver ? "1px solid white" : "0px",
         }}
-        className="col-7"
-        onChange={(e) =>
-          dispatch(setPlayerTextSlice({ id: id, text: e.target.value }))
-        }
-        value={text}
-        placeholder={"Summoner Name"}
+        className="row align-items-center justify-content-center "
         ref={dragRef}
-      ></input>
-      <div className="col-2 nerf-icon"></div>
-
-      <TiDelete
-        className={"delete-icon"}
-        onClick={() => {
-          dispatch(setPlayerTextSlice({ id: id, text: "" }))
-        }}
-      />
+      >
+        <div className="col-7 input-container">
+          <input
+            onChange={(e) =>
+              dispatch(setPlayerTextSlice({ id: id, text: e.target.value }))
+            }
+            value={text}
+            placeholder={"Summoner Name"}
+          ></input>
+          <TiDelete
+            className={"delete-icon"}
+            onClick={() => {
+              dispatch(setPlayerTextSlice({ id: id, text: "" }))
+            }}
+          />
+        </div>
+        <div className="col-2 perk-icon"></div>
+      </div>
     </li>
   )
 }

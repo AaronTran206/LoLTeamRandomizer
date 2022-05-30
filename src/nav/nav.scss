@@ -3,7 +3,7 @@
 nav {
   position: fixed;
   display: flex;
-  z-index: 2;
+  z-index: 100;
   width: fit-content;
   left: 50%;
   transform: translate(-50%);
@@ -34,4 +34,11 @@ nav {
     background: $color-active;
     color: $color-white;
   }
+}
+
+.divider {
+  display: flex;
+  align-self: center;
+  height: 40px;
+  border-right: 1px solid $color-light;
 }

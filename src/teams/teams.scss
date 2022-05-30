@@ -11,17 +11,6 @@
   box-shadow: 2px 5px 8px black;
 }
 
-.nerf-icon {
-  position: relative;
-  left: 1.7rem;
-  background-color: $color-darker-transparent;
-  height: 3rem;
-  border-radius: 0 0.7rem 0.7rem 0;
-  aspect-ratio: 1/1;
-  transition: $transition;
-  border: 1px solid transparent;
-}
-
 .blue {
   background-image: $team-blue;
   background-position: left;
@@ -33,21 +22,6 @@
   background-position: right;
   animation: bg-animation 3.5s infinite alternate;
 }
-
-.teams__list {
-  input {
-    position: relative;
-    left: 1.7rem;
-    font-weight: 500;
-    font-size: 1.5rem;
-    height: 3rem;
-    color: $color-white;
-    margin: 1rem 0rem;
-    padding: 0.5rem 2.5rem;
-    border-radius: 0.7rem 0rem 0rem 0.7rem;
-  }
-}
-
 .blue-list {
   background-color: $color-blue-variant;
   border: 1px solid transparent;
@@ -61,7 +35,6 @@
 
   input {
     background-color: $color-blue-bg-variant;
-    border: 1px solid $color-blue-variant;
     transition: $transition;
 
     &:hover,
@@ -75,7 +48,7 @@
     color: $color-blue-primary;
   }
 
-  .nerf-icon {
+  .perk-icon {
     &:hover {
       background-color: $color-blue-bg;
       border: 1px solid $color-blue-primary;
@@ -96,7 +69,6 @@
 
   input {
     background-color: $color-red-bg-variant;
-    border: 1px solid $color-red-variant;
     transition: $transition;
 
     &:hover,
@@ -109,7 +81,7 @@
   ::placeholder {
     color: $color-red-primary;
   }
-  .nerf-icon {
+  .perk-icon {
     &:hover {
       height: 3rem;
       background-color: $color-red-bg;
