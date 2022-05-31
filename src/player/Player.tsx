@@ -113,7 +113,7 @@ const Player: React.FC<{
               dispatch(setPlayerTextSlice({ id: id, text: e.target.value }))
             }
             value={text}
-            placeholder={"Summoner Name"}
+            placeholder={"Summoner"}
           ></input>
         </div>
 
