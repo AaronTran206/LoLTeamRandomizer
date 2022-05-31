@@ -96,7 +96,7 @@ const Player: React.FC<{
           opacity: isDragging ? 0.4 : 1,
           border: isDragging || isOver ? "1px solid white" : "0px",
         }}
-        className="row align-items-center justify-content-center "
+        className="row align-items-center justify-content-center"
         ref={dragRef}
       >
         <div className="col-7 input-container">

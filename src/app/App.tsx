@@ -11,7 +11,7 @@ import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { store } from "../store/store"
 import { Provider } from "react-redux"
-import Footer from "../footer/footer"
+import Footer from "../footer/Footer"
 
 const App: React.FC<{}> = ({}) => {
   return (

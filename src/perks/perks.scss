@@ -9,14 +9,12 @@
 }
 
 .perks__card {
-  margin-bottom: 1rem;
-  margin-right: 1.5rem;
-  padding: 1rem;
   border-radius: 0.2rem;
   cursor: default;
   user-select: none;
   border: 1px solid transparent;
   transition: $transition;
+  text-align: center;
 
   &:hover {
     background-color: $color-dark-transparent;

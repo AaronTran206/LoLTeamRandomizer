@@ -53,7 +53,7 @@ const Teams: React.FC<{}> = ({}) => {
   const renderPlayers = (color: string, arr: summonerObject[]) => {
     const teamArr = color === "blue" ? arr.slice(0, 5) : arr.slice(5, 10)
     return (
-      <article className={`col-sm-10 col-md-5 teams__container ${color}-list`}>
+      <article className={`col-sm-8 col-md-5 teams__container ${color}-list`}>
         <div className="teams__list ">
           {teamArr.map((summoner) => (
             <Player
@@ -71,11 +71,14 @@ const Teams: React.FC<{}> = ({}) => {
   }
 
   return (
-    <section className="container-sm px-0">
+    <section className="container">
       <div className="teams__header">
         <h1>Teams</h1>
       </div>
-      <div className="row g-3 d-flex justify-content-evenly" spellCheck="false">
+      <div
+        className="row d-flex gy-3 mx-1 justify-content-evenly"
+        spellCheck="false"
+      >
         {renderPlayers("blue", teams)}
         {renderPlayers("red", teams)}
       </div>

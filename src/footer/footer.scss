@@ -1,16 +1,17 @@
 @import "../app/variables";
 
-.footer__container {
+footer {
   text-align: center;
   padding: 3rem 0 9rem;
   background-color: $color-active;
-  align-content: center;
-}
 
-.portfolio__site {
-  color: white;
-}
+  .portfolio__site {
+    color: white;
+  }
 
-a {
-  text-decoration: none !important;
+  a {
+    text-decoration: none !important;
+    display: flex;
+    justify-content: center;
+  }
 }
