@@ -37,7 +37,7 @@ const Nav: React.FC<{}> = ({}) => {
 
   return (
     <nav>
-      <a className="button__icon" href="#">
+      <a className="button__icon" href="#home">
         <HiHome />
       </a>
       <span className="divider"></span>

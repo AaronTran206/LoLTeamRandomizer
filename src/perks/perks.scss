@@ -1,0 +1,37 @@
+@import "../app/variables";
+
+.perks__header {
+  margin: 0rem auto 3rem;
+  border-bottom: 1px solid $color-light;
+  width: fit-content;
+  cursor: default;
+  user-select: none;
+}
+
+.perks__card {
+  margin-bottom: 1rem;
+  margin-right: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  cursor: default;
+  user-select: none;
+  border: 1px solid transparent;
+  transition: $transition;
+
+  &:hover {
+    background-color: $color-dark-transparent;
+    border: 1px solid $color-white;
+  }
+
+  .perks__name {
+    color: $color-white;
+    margin-bottom: 1rem;
+  }
+
+  .perks__rules {
+    transition: $transition;
+    &:hover {
+      color: $color-white;
+    }
+  }
+}

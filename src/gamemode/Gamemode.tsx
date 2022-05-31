@@ -43,8 +43,10 @@ const Gamemode: React.FC<{}> = ({}) => {
   }
 
   return (
-    <div className={"gamemode__container"}>
-      <h5 className={"gamemode__title"}>Gamemode</h5>
+    <div className={"gamemode__container"} id={"home"}>
+      <div>
+        <h1 className={"gamemode__header"}>Gamemode</h1>
+      </div>
 
       <div className={"dropdown"}>
         <button

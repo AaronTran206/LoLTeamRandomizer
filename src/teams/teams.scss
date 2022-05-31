@@ -3,6 +3,15 @@
 .container {
   margin-bottom: 10rem;
 }
+
+.teams__header {
+  margin: 0rem auto 3rem;
+  border-bottom: 1px solid $color-light;
+  width: fit-content;
+  cursor: default;
+  user-select: none;
+}
+
 .teams__container {
   border: 1px solid transparent;
   border-radius: 0.5rem;

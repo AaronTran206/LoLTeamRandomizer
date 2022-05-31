@@ -70,7 +70,10 @@ const Teams: React.FC<{}> = ({}) => {
   }
 
   return (
-    <section className="container  px-0">
+    <section className="container-sm px-0">
+      <div className="teams__header">
+        <h1>Teams</h1>
+      </div>
       <div className="row g-3 d-flex justify-content-evenly" spellCheck="false">
         {renderPlayers("blue", teams)}
         {renderPlayers("red", teams)}
