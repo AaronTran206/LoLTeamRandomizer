@@ -10,15 +10,30 @@ import {
   setPlayerPerkSlice,
   summonerObject,
 } from "../slices/teamSlice"
+import { gamemodeObj } from "../slices/gamemodeSlice"
 import cursedPerks from "../static/cursedPerks"
 
 const Nav: React.FC<{}> = ({}) => {
   const dispatch = useDispatch()
+  const gamemode: gamemodeObj = useSelector((state: any) => state.gamemode.mode)
   const teams: summonerObject[] = useSelector(
     (state: any) => state.team.teamArr
   )
 
-  const copyInfo = useCallback(() => {}, [setTeamSlice, teams])
+  const copyInfo = useCallback(() => {
+    navigator.clipboard.writeText(
+      `
+      Gamemode: ${gamemode.name}
+      Gamemode rules: ${gamemode.rules} 
+      BLUE TEAM (cursed perk):                RED TEAM (cursed perk):
+      ${teams[0].text} (${teams[0].perk.name})    ${teams[5].text} (${teams[5].perk.name})
+      ${teams[1].text} (${teams[1].perk.name})    ${teams[6].text} (${teams[6].perk.name})
+      ${teams[2].text} (${teams[2].perk.name})    ${teams[7].text} (${teams[7].perk.name})
+      ${teams[3].text} (${teams[3].perk.name})    ${teams[7].text} (${teams[7].perk.name})
+      ${teams[4].text} (${teams[4].perk.name})    ${teams[9].text} (${teams[9].perk.name})
+      `
+    )
+  }, [setTeamSlice, teams])
 
   const randomizePerks = useCallback(() => {
     const randomizePerksArr = [...teams]
