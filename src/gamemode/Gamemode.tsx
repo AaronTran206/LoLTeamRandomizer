@@ -62,8 +62,8 @@ const Gamemode: React.FC<{}> = ({}) => {
           className={"dropdown-menu dropdown-menu-dark gamemode__list"}
           aria-labelledby="gamemode__dropdownBtn"
         >
-          {availableGamemodes.map((obj) => (
-            <li className={"gamemode__list-items"}>
+          {availableGamemodes.map((obj, i) => (
+            <li key={obj.name} className={"gamemode__list-items"}>
               <a
                 className={"dropdown-item "}
                 onClick={() => handleClickGamemode(obj.name)}

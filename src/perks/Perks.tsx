@@ -10,7 +10,10 @@ const Perks: React.FC<{}> = ({}) => {
       </div>
       <div className="row justify-content-center">
         {cursedPerks.map((perk) => (
-          <div className="col-xs-10 col-sm-5 col-md-3 perks__card">
+          <div
+            key={perk.name}
+            className="col-xs-10 col-sm-5 col-md-3 perks__card"
+          >
             <h2 className={"perks__name"}>{perk.name}</h2>
             <h5 className={"perks__rules"}>{perk.rules}</h5>
           </div>

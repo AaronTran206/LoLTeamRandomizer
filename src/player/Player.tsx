@@ -1,16 +1,22 @@
 import React, { useState } from "react"
 import { useDrag, useDrop } from "react-dnd"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setPlayerTextSlice } from "../slices/teamSlice"
 import { TiDelete } from "react-icons/ti"
 import "./player.scss"
 
+interface perkObj {
+  name: string
+  rules: string
+}
+
 const Player: React.FC<{
   text: string
   id: string
+  perk: perkObj
   switchPlayer: (id: string, to: number) => void
   findPlayer: (id: string) => { index: number }
-}> = ({ text, id, switchPlayer, findPlayer }) => {
+}> = ({ text, id, perk, switchPlayer, findPlayer }) => {
   const dispatch = useDispatch()
 
   //get original index of Player
@@ -53,6 +59,8 @@ const Player: React.FC<{
     [findPlayer, switchPlayer]
   )
 
+  const getIcon = (perkName) => {}
+
   return (
     <li ref={drop}>
       <div
@@ -78,7 +86,11 @@ const Player: React.FC<{
             }}
           />
         </div>
-        <div className="col-2 perk-icon"></div>
+        <div className="col-2 perk-icon">
+          <>{getIcon(perk.name)}</>
+          <h5 className="summoner__perk-name">{perk.name}</h5>
+          {/* <h5 className="summoner__perk-rules">{perk.rules}</h5> */}
+        </div>
       </div>
     </li>
   )

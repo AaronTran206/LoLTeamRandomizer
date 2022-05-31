@@ -18,7 +18,10 @@ const Teams: React.FC<{}> = ({}) => {
       const player = teams.filter((c) => c.id === id)[0] as {
         id: string
         text: string
-        icon: string
+        perk: {
+          name: string
+          rules: string
+        }
       }
       return {
         player,
@@ -41,11 +44,8 @@ const Teams: React.FC<{}> = ({}) => {
       updatedArr[index] = updatedArr[atIndex]
       updatedArr[atIndex] = temp
 
-      console.log(updatedArr)
-
+      //send updated array back to redux store
       dispatch(setTeamSlice(updatedArr))
-
-      //rerender component with updated array placements
     },
     [findPlayer, teams, setTeamSlice]
   )
@@ -59,6 +59,7 @@ const Teams: React.FC<{}> = ({}) => {
             <Player
               text={summoner.text}
               key={summoner.id}
+              perk={summoner.perk}
               id={summoner.id}
               switchPlayer={switchPlayer}
               findPlayer={findPlayer}
