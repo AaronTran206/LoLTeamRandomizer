@@ -58,6 +58,7 @@ const Player: React.FC<{
     [id, originalIndex, switchPlayer]
   )
 
+  //hook reference logic for when the hovering over an item
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: "player",
@@ -74,6 +75,7 @@ const Player: React.FC<{
     [findPlayer, switchPlayer]
   )
 
+  //return icon based off of perkName from redux global state
   const getIcon = (perkName) => {
     if (perkName === "Beginner") return <FaBaby />
     if (perkName === "Anime Voice Actor") return <MdRecordVoiceOver />

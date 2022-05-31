@@ -23,6 +23,7 @@ const Nav: React.FC<{}> = ({}) => {
     (state: any) => state.team.teamArr
   )
 
+  //copy info to clipboard
   const copyInfo = useCallback(() => {
     navigator.clipboard.writeText(
       `
@@ -45,12 +46,14 @@ const Nav: React.FC<{}> = ({}) => {
       `
     )
 
+    //toastify notification to show that contents were copied
     toast.success("Copied to clipboard!", {
       position: "top-center",
       autoClose: 2000,
     })
   }, [setTeamSlice, teams])
 
+  //randomize perks in global state and send them back to global state
   const randomizePerks = useCallback(() => {
     const randomizePerksArr = [...teams]
 
@@ -69,6 +72,7 @@ const Nav: React.FC<{}> = ({}) => {
     })
   }, [setTeamSlice, teams])
 
+  //randomize summoner text in global state then send back to global state
   const randomizeSummoners = useCallback(() => {
     // put summoners states into an array to prepare for randomization
     const randomizeArr = [...teams]

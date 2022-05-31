@@ -50,6 +50,8 @@ const Teams: React.FC<{}> = ({}) => {
     [findPlayer, teams, setTeamSlice]
   )
 
+  //abstracted teams rendering logic
+  //split the global redux state into two arrays then render them based off of input color
   const renderPlayers = (color: string, arr: summonerObject[]) => {
     const teamArr = color === "blue" ? arr.slice(0, 5) : arr.slice(5, 10)
     return (
