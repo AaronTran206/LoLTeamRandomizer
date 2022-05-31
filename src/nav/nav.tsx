@@ -59,8 +59,6 @@ const Nav: React.FC<{}> = ({}) => {
       const pName = cursedPerks[perkNum].name
       const pRules = cursedPerks[perkNum].rules
 
-      console.log(pName, pRules)
-
       dispatch(
         setPlayerPerkSlice({
           id: summoner.id,
