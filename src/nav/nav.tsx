@@ -12,8 +12,11 @@ import {
 } from "../slices/teamSlice"
 import { gamemodeObj } from "../slices/gamemodeSlice"
 import cursedPerks from "../static/cursedPerks"
+import { toast, ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const Nav: React.FC<{}> = ({}) => {
+  //redux states
   const dispatch = useDispatch()
   const gamemode: gamemodeObj = useSelector((state: any) => state.gamemode.mode)
   const teams: summonerObject[] = useSelector(
@@ -25,14 +28,27 @@ const Nav: React.FC<{}> = ({}) => {
       `
       Gamemode: ${gamemode.name}
       Gamemode rules: ${gamemode.rules} 
-      BLUE TEAM (cursed perk):                RED TEAM (cursed perk):
-      ${teams[0].text} (${teams[0].perk.name})    ${teams[5].text} (${teams[5].perk.name})
-      ${teams[1].text} (${teams[1].perk.name})    ${teams[6].text} (${teams[6].perk.name})
-      ${teams[2].text} (${teams[2].perk.name})    ${teams[7].text} (${teams[7].perk.name})
-      ${teams[3].text} (${teams[3].perk.name})    ${teams[7].text} (${teams[7].perk.name})
-      ${teams[4].text} (${teams[4].perk.name})    ${teams[9].text} (${teams[9].perk.name})
+
+      BLUE TEAM (cursed perk):                
+      ${teams[0].text} (${teams[0].perk.name})
+      ${teams[1].text} (${teams[1].perk.name})    
+      ${teams[2].text} (${teams[2].perk.name})    
+      ${teams[3].text} (${teams[3].perk.name})    
+      ${teams[4].text} (${teams[4].perk.name})    
+
+      RED TEAM (cursed perk):
+      ${teams[5].text} (${teams[5].perk.name})
+      ${teams[6].text} (${teams[6].perk.name})
+      ${teams[7].text} (${teams[7].perk.name})
+      ${teams[8].text} (${teams[8].perk.name})
+      ${teams[9].text} (${teams[9].perk.name})
       `
     )
+
+    toast.success("Copied to clipboard!", {
+      position: "top-center",
+      autoClose: 2000,
+    })
   }, [setTeamSlice, teams])
 
   const randomizePerks = useCallback(() => {
@@ -72,22 +88,25 @@ const Nav: React.FC<{}> = ({}) => {
   }, [setTeamSlice, teams])
 
   return (
-    <nav>
-      <a className="button__icon" href="#home">
-        <HiHome />
-      </a>
-      <span className="divider"></span>
-      <a className="button__icon" onClick={randomizeSummoners}>
-        <FaDice />
-      </a>
-      <a className="button__icon" onClick={randomizePerks}>
-        <GiPresent />
-      </a>
-      <span className="divider"></span>
-      <a className="button__icon" onClick={copyInfo}>
-        <MdContentCopy />
-      </a>
-    </nav>
+    <>
+      <nav>
+        <a className="button__icon" href="#home">
+          <HiHome />
+        </a>
+        <span className="divider"></span>
+        <a className="button__icon" onClick={randomizeSummoners}>
+          <FaDice />
+        </a>
+        <a className="button__icon" onClick={randomizePerks}>
+          <GiPresent />
+        </a>
+        <span className="divider"></span>
+        <a className="button__icon" onClick={copyInfo}>
+          <MdContentCopy />
+        </a>
+      </nav>
+      <ToastContainer />
+    </>
   )
 }
 
