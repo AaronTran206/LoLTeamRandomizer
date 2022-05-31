@@ -28,7 +28,7 @@ input {
   height: 3rem;
   right: 0rem;
   top: 1rem;
-  z-index: 99;
+  z-index: 98;
 
   &:hover {
     color: $color-light;
@@ -36,11 +36,50 @@ input {
   }
 }
 
-.perk-icon {
+.perk-container {
   background-color: $color-darker-transparent;
   height: 3rem;
   border-radius: 0 0.7rem 0.7rem 0;
   aspect-ratio: 1/1;
   transition: $transition;
   border: 1px solid transparent;
+  position: relative;
+
+  &:hover {
+    .summoner__perk-rules {
+      opacity: 1;
+      display: flex;
+      padding: 1rem;
+    }
+  }
+}
+
+.summoner__perk-icon {
+  margin-top: 0.2rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: $color-white;
+}
+
+.summoner__perk-name {
+  font-size: 0.7rem;
+  text-align: center;
+  color: $color-white;
+}
+
+.summoner__perk-rules {
+  display: none;
+  position: absolute;
+  right: 9rem;
+  font-size: 0.8rem;
+  color: $color-white;
+  opacity: 1;
+  z-index: 99;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(15px);
+  transition: $transition;
+  border-radius: 0.4rem;
+  clip-path: polygon(0 0, 95% 0, 95% 15%, 98% 18%, 95% 21%, 95% 100%, 0 100%);
 }

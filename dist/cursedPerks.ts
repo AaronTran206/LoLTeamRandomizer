@@ -26,7 +26,7 @@ const cursedPerks = [
   },
   {
     id: 6,
-    name: `Pinky Clicker`,
+    name: `Pinky Promise`,
     rules: `You can only right-click with pinky.`,
   },
   {

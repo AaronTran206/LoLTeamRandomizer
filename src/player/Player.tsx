@@ -5,6 +5,21 @@ import { setPlayerTextSlice } from "../slices/teamSlice"
 import { TiDelete } from "react-icons/ti"
 import "./player.scss"
 
+//gamemode icons
+import {
+  GiOneEyed,
+  GiLeg,
+  GiArm,
+  GiBlindfold,
+  GiMirrorMirror,
+  GiMusicalNotes,
+  GiAbdominalArmor,
+} from "react-icons/gi"
+import { FaBaby, FaUserFriends } from "react-icons/fa"
+import { MdCelebration, MdRecordVoiceOver } from "react-icons/md"
+import { TbHandLittleFinger } from "react-icons/tb"
+import { HandLittleFinger } from "tabler-icons-react"
+
 interface perkObj {
   name: string
   rules: string
@@ -59,7 +74,20 @@ const Player: React.FC<{
     [findPlayer, switchPlayer]
   )
 
-  const getIcon = (perkName) => {}
+  const getIcon = (perkName) => {
+    if (perkName === "Beginner") return <FaBaby />
+    if (perkName === "Anime Voice Actor") return <MdRecordVoiceOver />
+    if (perkName === "The Lead Singer") return <GiMusicalNotes />
+    if (perkName === "The Pirate Life") return <GiOneEyed />
+    if (perkName === "Mirror's Edge") return <GiMirrorMirror />
+    if (perkName === "Pinky Promise") return <HandLittleFinger />
+    if (perkName === "Mr.Nice Guy") return <FaUserFriends />
+    if (perkName === "Hype Man") return <MdCelebration />
+    if (perkName === "Lee Sin") return <GiBlindfold />
+    if (perkName === "Leg Day") return <GiLeg />
+    if (perkName === "Arm Day") return <GiArm />
+    if (perkName === "Ab Day") return <GiAbdominalArmor />
+  }
 
   return (
     <li ref={drop}>
@@ -86,11 +114,20 @@ const Player: React.FC<{
             }}
           />
         </div>
-        <div className="col-2 perk-icon">
-          <>{getIcon(perk.name)}</>
-          <h5 className="summoner__perk-name">{perk.name}</h5>
-          {/* <h5 className="summoner__perk-rules">{perk.rules}</h5> */}
-        </div>
+
+        {perk.name !== "" ? (
+          <div className="col-3 perk-container">
+            <h5 className="summoner__perk-rules">{perk.rules}</h5>
+            <div>
+              <div className="summoner__perk-icon">
+                <>{getIcon(perk.name)}</>
+              </div>
+              <h5 className="summoner__perk-name">{perk.name}</h5>
+            </div>
+          </div>
+        ) : (
+          <div className="col-3 perk-container"></div>
+        )}
       </div>
     </li>
   )

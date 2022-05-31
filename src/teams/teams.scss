@@ -57,7 +57,7 @@
     color: $color-blue-primary;
   }
 
-  .perk-icon {
+  .perk-container {
     &:hover {
       background-color: $color-blue-bg;
       border: 1px solid $color-blue-primary;
@@ -90,7 +90,7 @@
   ::placeholder {
     color: $color-red-primary;
   }
-  .perk-icon {
+  .perk-container {
     &:hover {
       height: 3rem;
       background-color: $color-red-bg;
