@@ -100,6 +100,12 @@ const Player: React.FC<{
         ref={dragRef}
       >
         <div className="col-7 input-container">
+          <TiDelete
+            className={"delete-icon"}
+            onClick={() => {
+              dispatch(setPlayerTextSlice({ id: id, text: "" }))
+            }}
+          />
           <input
             onChange={(e) =>
               dispatch(setPlayerTextSlice({ id: id, text: e.target.value }))
@@ -107,12 +113,6 @@ const Player: React.FC<{
             value={text}
             placeholder={"Summoner Name"}
           ></input>
-          <TiDelete
-            className={"delete-icon"}
-            onClick={() => {
-              dispatch(setPlayerTextSlice({ id: id, text: "" }))
-            }}
-          />
         </div>
 
         {perk.name !== "" ? (

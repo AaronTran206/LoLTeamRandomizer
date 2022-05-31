@@ -53,6 +53,12 @@
       border: 1px solid transparent;
     }
   }
+
+  .delete-icon:hover + input {
+    background-color: $color-blue-primary;
+    border: 1px solid transparent;
+  }
+
   ::placeholder {
     color: $color-blue-primary;
   }
@@ -86,6 +92,11 @@
       background-color: $color-red-primary;
       border: 1px solid transparent;
     }
+  }
+
+  .delete-icon:hover + input {
+    background-color: $color-red-primary;
+    border: 1px solid transparent;
   }
   ::placeholder {
     color: $color-red-primary;

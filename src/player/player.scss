@@ -18,14 +18,14 @@ input {
 }
 
 .delete-icon {
-  width: fit-content;
-  height: 100%;
+  display: table;
   color: $color-dark-transparent;
   transition: $transition;
   background-clip: content-box;
   -webkit-background-clip: content-box;
-  position: absolute;
   height: 3rem;
+  width: 3rem;
+  position: absolute;
   right: 0rem;
   top: 1rem;
   z-index: 98;
