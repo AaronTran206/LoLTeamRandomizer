@@ -4,6 +4,8 @@ footer {
   text-align: center;
   padding: 3rem 0 9rem;
   background-color: $color-active;
+  cursor: default;
+  user-select: none;
 
   .portfolio__site {
     color: white;
