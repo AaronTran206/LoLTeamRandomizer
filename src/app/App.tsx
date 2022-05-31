@@ -11,6 +11,7 @@ import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { store } from "../store/store"
 import { Provider } from "react-redux"
+import Footer from "../footer/footer"
 
 const App: React.FC<{}> = ({}) => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC<{}> = ({}) => {
         <Teams />
         <Perks />
         <Nav />
+        <Footer />
       </DndProvider>
     </Provider>
   )

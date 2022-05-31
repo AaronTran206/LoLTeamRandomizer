@@ -9,6 +9,7 @@ module.exports = {
     nav: path.resolve("./src/nav/Nav.tsx"),
     header: path.resolve("./src/header/Header.tsx"),
     teams: path.resolve("./src/teams/Teams.tsx"),
+    footer: path.resolve('./src/footer/Footer')
   },
   module: {
     rules: [
