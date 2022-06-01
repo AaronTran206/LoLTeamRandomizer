@@ -23,7 +23,7 @@ const availableGamemodes = [
   {
     id: 4,
     name: `Nemesis Draft`,
-    rules: `Players pick the champion that the the enemy of the same position will play.`,
+    rules: `Players pick which champion the enemy of the same position will play.`,
   },
   {
     id: 5,
