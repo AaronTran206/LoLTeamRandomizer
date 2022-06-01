@@ -22,7 +22,7 @@ const cursedPerks = [
   {
     id: 5,
     name: `Mirror's Edge`,
-    rules: `Switch key-bindings from Q-W-E-R to R-E-W-Q.`,
+    rules: `Switch summoner spells keybinding`,
   },
   {
     id: 6,

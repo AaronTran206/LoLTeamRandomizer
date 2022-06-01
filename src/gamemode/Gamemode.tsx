@@ -25,6 +25,11 @@ const availableGamemodes = [
     name: `Nemesis Draft`,
     rules: `Players pick the champion that the the enemy of the same position will play.`,
   },
+  {
+    id: 5,
+    name: `Mirror Mode`,
+    rules: `Switch key-bindings from Q-W-E-R to R-E-W-Q.`,
+  },
 ]
 
 const Gamemode: React.FC<{}> = ({}) => {
