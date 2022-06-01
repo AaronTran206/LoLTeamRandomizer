@@ -22,7 +22,7 @@ const cursedPerks = [
   {
     id: 5,
     name: `Mirror's Edge`,
-    rules: `Switch summoner spells keybinding`,
+    rules: `Switch summoner spells keybinding.`,
   },
   {
     id: 6,
@@ -37,7 +37,7 @@ const cursedPerks = [
   {
     id: 8,
     name: `Hype Man`,
-    rules: `You're overly enthusiastic and supportive of everything and anything`,
+    rules: `You're overly enthusiastic and supportive of everything and anything.`,
   },
   {
     id: 9,
