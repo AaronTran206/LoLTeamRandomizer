@@ -4,6 +4,7 @@ import { FaDice } from "react-icons/fa"
 import { GiPresent } from "react-icons/gi"
 import { HiHome } from "react-icons/hi"
 import { MdContentCopy } from "react-icons/md"
+import { BsEraserFill } from "react-icons/bs"
 import { useSelector, useDispatch } from "react-redux"
 import {
   setTeamSlice,
@@ -89,22 +90,48 @@ const Nav: React.FC<{}> = ({}) => {
     dispatch(setTeamSlice(randomizeArr))
   }, [setTeamSlice, teams])
 
+  const resetSummoners = useCallback(() => {
+    //set redux store back to initial state
+    dispatch(
+      setTeamSlice([
+        { id: "Summoner 1", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 2", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 3", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 4", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 5", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 6", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 7", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 8", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 9", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 10", text: "", perk: { name: "", rules: "" } },
+      ])
+    )
+  }, [setTeamSlice, teams])
+
   return (
     <>
       <nav>
         <a className="button__icon" href="#home">
           <HiHome />
+          <h5 className="button__text">home</h5>
         </a>
         <span className="divider"></span>
         <a className="button__icon" onClick={randomizeSummoners}>
           <FaDice />
+          <h5 className="button__text">Randomize</h5>
         </a>
         <a className="button__icon" onClick={randomizePerks}>
           <GiPresent />
+          <h5 className="button__text">Perks</h5>
+        </a>
+        <a className="button__icon" onClick={resetSummoners}>
+          <BsEraserFill />
+          <h5 className="button__text">Reset</h5>
         </a>
         <span className="divider"></span>
         <a className="button__icon" onClick={copyInfo}>
           <MdContentCopy />
+          <h5 className="button__text">Copy</h5>
         </a>
       </nav>
       <ToastContainer />

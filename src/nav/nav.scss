@@ -15,6 +15,10 @@ nav {
   backdrop-filter: blur(15px);
 }
 
+a {
+  position: relative;
+}
+
 .button__icon {
   background: transparent;
   display: flex;
@@ -34,6 +38,28 @@ nav {
     background: $color-active;
     color: $color-white;
   }
+
+  &:hover {
+    .button__text {
+      display: flex;
+      opacity: 1;
+    }
+  }
+}
+
+.button__text {
+  background: $color-darker-transparent;
+  border: 1px solid $color-darker-transparent;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  position: absolute;
+  bottom: 4rem;
+  left: -0.5rem;
+  display: none;
+  opacity: 0;
+  transition: $transition;
+  cursor: default;
+  user-select: none;
 }
 
 .divider {
