@@ -1,7 +1,7 @@
 import React, { useCallback } from "react"
 import "./nav.scss"
 import { FaDice } from "react-icons/fa"
-import { GiPresent } from "react-icons/gi"
+import { GiPresent, GiCancel } from "react-icons/gi"
 import { HiHome } from "react-icons/hi"
 import { MdContentCopy } from "react-icons/md"
 import { BsEraserFill } from "react-icons/bs"
@@ -23,6 +23,75 @@ const Nav: React.FC<{}> = ({}) => {
   const teams: summonerObject[] = useSelector(
     (state: any) => state.team.teamArr
   )
+
+  //randomize summoner text in global state then send back to global state
+  const randomizeSummoners = useCallback(() => {
+    // put summoners states into an array to prepare for randomization
+    const randomizeArr = [...teams]
+
+    // loop through each variable of the array starting from the last to the first
+    for (let i = randomizeArr.length - 1; i > 0; i--) {
+      const a = Math.floor(Math.random() * (i + 1))
+
+      //swap positions of randomizeArr elements using a temp variable
+      const temp = randomizeArr[i]
+      randomizeArr[i] = randomizeArr[a]
+      randomizeArr[a] = temp
+    }
+    dispatch(setTeamSlice(randomizeArr))
+  }, [setTeamSlice, teams])
+
+  //randomize perks in global state and send them back to global state
+  const randomizePerks = useCallback(() => {
+    const randomizePerksArr = [...teams]
+
+    randomizePerksArr.map((summoner) => {
+      const perkNum = Math.floor(Math.random() * cursedPerks.length)
+      const pName = cursedPerks[perkNum].name
+      const pRules = cursedPerks[perkNum].rules
+
+      dispatch(
+        setPlayerPerkSlice({
+          id: summoner.id,
+          perkName: pName,
+          perkRules: pRules,
+        })
+      )
+    })
+  }, [setTeamSlice, teams])
+
+  //remove perk name and perk rules from each object in redux array
+  const cancelPerks = useCallback(() => {
+    const cancelPerksArr = [...teams]
+
+    cancelPerksArr.map((summoner) => {
+      dispatch(
+        setPlayerPerkSlice({
+          id: summoner.id,
+          perkName: "",
+          perkRules: "",
+        })
+      )
+    })
+  }, [setTeamSlice, teams])
+
+  //set redux store back to initial state
+  const resetSummoners = useCallback(() => {
+    dispatch(
+      setTeamSlice([
+        { id: "Summoner 1", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 2", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 3", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 4", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 5", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 6", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 7", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 8", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 9", text: "", perk: { name: "", rules: "" } },
+        { id: "Summoner 10", text: "", perk: { name: "", rules: "" } },
+      ])
+    )
+  }, [setTeamSlice, teams])
 
   //copy info to clipboard
   const copyInfo = useCallback(() => {
@@ -54,66 +123,12 @@ const Nav: React.FC<{}> = ({}) => {
     })
   }, [setTeamSlice, teams])
 
-  //randomize perks in global state and send them back to global state
-  const randomizePerks = useCallback(() => {
-    const randomizePerksArr = [...teams]
-
-    randomizePerksArr.map((summoner) => {
-      const perkNum = Math.floor(Math.random() * cursedPerks.length)
-      const pName = cursedPerks[perkNum].name
-      const pRules = cursedPerks[perkNum].rules
-
-      dispatch(
-        setPlayerPerkSlice({
-          id: summoner.id,
-          perkName: pName,
-          perkRules: pRules,
-        })
-      )
-    })
-  }, [setTeamSlice, teams])
-
-  //randomize summoner text in global state then send back to global state
-  const randomizeSummoners = useCallback(() => {
-    // put summoners states into an array to prepare for randomization
-    const randomizeArr = [...teams]
-
-    // loop through each variable of the array starting from the last to the first
-    for (let i = randomizeArr.length - 1; i > 0; i--) {
-      const a = Math.floor(Math.random() * (i + 1))
-
-      //swap positions of randomizeArr elements using a temp variable
-      const temp = randomizeArr[i]
-      randomizeArr[i] = randomizeArr[a]
-      randomizeArr[a] = temp
-    }
-    dispatch(setTeamSlice(randomizeArr))
-  }, [setTeamSlice, teams])
-
-  const resetSummoners = useCallback(() => {
-    //set redux store back to initial state
-    dispatch(
-      setTeamSlice([
-        { id: "Summoner 1", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 2", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 3", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 4", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 5", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 6", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 7", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 8", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 9", text: "", perk: { name: "", rules: "" } },
-        { id: "Summoner 10", text: "", perk: { name: "", rules: "" } },
-      ])
-    )
-  }, [setTeamSlice, teams])
-
   return (
     <>
       <nav>
         <a className="button__icon" href="#home">
           <HiHome />
-          <h5 className="button__text">home</h5>
+          <h5 className="button__text">Home</h5>
         </a>
         <span className="divider"></span>
         <a className="button__icon" onClick={randomizeSummoners}>
@@ -123,6 +138,10 @@ const Nav: React.FC<{}> = ({}) => {
         <a className="button__icon" onClick={randomizePerks}>
           <GiPresent />
           <h5 className="button__text">Perks</h5>
+        </a>
+        <a className="button__icon" onClick={cancelPerks}>
+          <GiCancel />
+          <h5 className="button__text">Cancel Perks</h5>
         </a>
         <a className="button__icon" onClick={resetSummoners}>
           <BsEraserFill />

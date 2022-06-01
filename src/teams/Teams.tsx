@@ -77,6 +77,9 @@ const Teams: React.FC<{}> = ({}) => {
       <div className="teams__header">
         <h1>Teams</h1>
       </div>
+      <div className="teams__description">
+        <small>Try dragging and dropping players!</small>
+      </div>
       <div
         className="row d-flex gy-3 mx-1 justify-content-evenly"
         spellCheck="false"

@@ -5,11 +5,16 @@
 }
 
 .teams__header {
-  margin: 0rem auto 3rem;
+  margin: 0rem auto 1.5rem;
   border-bottom: 1px solid $color-light;
   width: fit-content;
   cursor: default;
   user-select: none;
+}
+
+.teams__description {
+  margin-bottom: 1rem;
+  color: $color-light;
 }
 
 .teams__container {
